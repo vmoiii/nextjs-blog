@@ -1,10 +1,16 @@
+import { GetStaticProps } from "next";
 import Head from "next/head";
 import Link from "next/link";
 import { Date } from "../components/date";
+import Example from "../components/heroSections";
 import Layout, { siteTitle } from "../components/layout";
 import { getSortedPostsData } from "../lib/posts";
 import utilStyles from "../styles/utils.module.css";
-export default function Home({ allPostsData }) {
+export default function Home({
+  allPostsData,
+}: {
+  allPostsData: { date: string; title: string; id: string }[];
+}) {
   return (
     <Layout home>
       <Head>
@@ -33,10 +39,11 @@ export default function Home({ allPostsData }) {
           ))}
         </ul>
       </section>
+      <Example />
     </Layout>
   );
 }
-export const getStaticProps = async () => {
+export const getStaticProps: GetStaticProps = async () => {
   const allPostsData = getSortedPostsData();
   // console.log(JSON.stringify(allPostsData));
   return {
