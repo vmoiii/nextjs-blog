@@ -9,7 +9,7 @@ import utilStyles from "../../styles/utils.module.css";
 export default function FirstPost({
   postData,
 }: {
-  postData: { title: string; date: string; contentHtml: string };
+  postData: { title: string; date: string; id: string };
 }) {
   return (
     <Layout>
